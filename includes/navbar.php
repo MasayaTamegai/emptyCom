@@ -1,4 +1,4 @@
-<nav>
+	<nav>
 		<ul>
 			<li><a href="index.php">Home</a></li>
 			<li><a href="add_post.php">Add a Post</a></li>
