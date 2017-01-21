@@ -33,7 +33,7 @@
 			</select>
 		</div>
 		<div>
-			<input type="submit" value="Add Post">
+			<input type="submit" value="Add Post"> 
 		</div>
 	</form>
 </body>
