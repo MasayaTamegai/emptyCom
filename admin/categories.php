@@ -22,7 +22,7 @@
                    
                     <form action="" method="post">
                         <div class="form-group">
-                           <label for="cat_title">Add Category</label>
+                           <label for="cat_title">Add a Category</label>
                             <input class="form-control" type="text" name="cat_title" >
                         </div>
                         <div class="form-group">
