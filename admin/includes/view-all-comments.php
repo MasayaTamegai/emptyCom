@@ -6,8 +6,8 @@
             <th>Comment</th>
             <th>Email</th>
             <th>Status</th>
+            <th>Reply to</th>
             <th>Date</th>
-            <th>In Response to</th>
             <th>Approved</th>
             <th>Decline</th>
             <th>Delete</th>
@@ -24,8 +24,8 @@
         $comment_id = $row['comment_id'];
         $comment_post_id = $row['comment_post_id'];
         $comment_author = $row['comment_author'];
-        $comment_email = $row['comment_content'];
-        $comment_content = $row['comment_email'];
+        $comment_content = $row['comment_content'];
+        $comment_email = $row['comment_email'];
         $comment_status = $row['comment_status'];
         $comment_date = $row['comment_date'];
 
@@ -46,11 +46,24 @@
             
         echo "<td>$comment_email</td>";
         echo "<td>$comment_status</td>";
-        echo "<td>Some Title</td>";
+            
+        $query = "SELECT * FROM posts WHERE post_id = $comment_post_id ";
+        $select_post_id_query = mysqli_query($connection, $query);
+        while($row = mysqli_fetch_assoc($select_post_id_query)){
+            $post_id = $row['post_id'];
+            $post_title = $row['post_title'];
+            
+            echo "<td><a href='../post.php?p_id=$post_id'>$post_title</a></td>";
+            
+        }
+            
+        
+        
+            
         echo "<td>$comment_date</td>";
-        echo "<td><a href='posts.php?source=edit_post&p_id='>Approve</a></td>";
-        echo "<td><a href='posts.php?delete='>Decline</a></td>";
-        echo "<td><a href='posts.php?delete='>Delete</a></td>";
+        echo "<td><a href='comments.php?approve=$comment_id'>Approve</a></td>";
+        echo "<td><a href='comments.php?decline=$comment_id'>Decline</a></td>";
+        echo "<td><a href='comments.php?delete=$comment_id'>Delete</a></td>";
 
         }
 
@@ -62,11 +75,31 @@
 
 <?php 
 
-if(isset($_GET['delete'])) {
-    $the_post_id = $_GET['delete'];
+if(isset($_GET['approve'])) {
+    $the_comment_id = $_GET['approve'];
     
-        $query = "DELETE FROM posts WHERE post_id = {$the_post_id} ";
+        $query = "UPDATE comments SET comment_status = 'approve' WHERE comment_id = $the_comment_id ";
+        
+        $decline_query = mysqli_query($connection, $query);
+        header("Location: comments.php");
+}
+
+if(isset($_GET['decline'])) {
+    $the_comment_id = $_GET['decline'];
+    
+        $query = "UPDATE comments SET comment_status = 'decline' ";
+        
+        $decline_query = mysqli_query($connection, $query);
+        header("Location: comments.php");
+}
+
+if(isset($_GET['delete'])) {
+    $the_comment_id = $_GET['delete'];
+    
+        $query = "DELETE FROM comments WHERE comment_id = {$the_comment_id} ";
+        
         $delete_query = mysqli_query($connection, $query);
+        header("Location: comments.php");
 }
 
 ?>
