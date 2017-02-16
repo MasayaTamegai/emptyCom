@@ -9,7 +9,7 @@
             <th>Reply to</th>
             <th>Date</th>
             <th>Approved</th>
-            <th>Decline</th>
+            <th>Declined</th>
             <th>Delete</th>
         </tr>
     </thead>
@@ -61,8 +61,8 @@
         
             
         echo "<td>$comment_date</td>";
-        echo "<td><a href='comments.php?approve=$comment_id'>Approve</a></td>";
-        echo "<td><a href='comments.php?decline=$comment_id'>Decline</a></td>";
+        echo "<td><a href='comments.php?approved=$comment_id'>Approved</a></td>";
+        echo "<td><a href='comments.php?declined=$comment_id'>Declined</a></td>";
         echo "<td><a href='comments.php?delete=$comment_id'>Delete</a></td>";
 
         }
@@ -75,19 +75,19 @@
 
 <?php 
 
-if(isset($_GET['approve'])) {
-    $the_comment_id = $_GET['approve'];
+if(isset($_GET['approved'])) {
+    $the_comment_id = $_GET['approved'];
     
-        $query = "UPDATE comments SET comment_status = 'approve' WHERE comment_id = $the_comment_id ";
+        $query = "UPDATE comments SET comment_status = 'approved' WHERE comment_id = $the_comment_id ";
         
         $decline_query = mysqli_query($connection, $query);
         header("Location: comments.php");
 }
 
-if(isset($_GET['decline'])) {
-    $the_comment_id = $_GET['decline'];
+if(isset($_GET['declined'])) {
+    $the_comment_id = $_GET['declined'];
     
-        $query = "UPDATE comments SET comment_status = 'decline' ";
+        $query = "UPDATE comments SET comment_status = 'declined' ";
         
         $decline_query = mysqli_query($connection, $query);
         header("Location: comments.php");

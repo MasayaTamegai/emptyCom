@@ -14,7 +14,7 @@
             <div class="col-md-8">
 
 <?php 
-$query = "SELECT * FROM posts";
+$query = "SELECT * FROM posts WHERE post_status = 'published' " ;
 $select_all_posts_query = mysqli_query($connection,$query);
 
 while($row = mysqli_fetch_assoc($select_all_posts_query)) {
@@ -24,6 +24,12 @@ while($row = mysqli_fetch_assoc($select_all_posts_query)) {
         $post_date = $row['post_date'];
         $post_image = $row['post_image'];
         $post_content = substr($row['post_content'],0,100);
+        $post_status = $row['post_status'];
+    
+        if($post_status !== 'published') {
+            echo "<h1>There's no post.</h1>";
+        } else {
+            
 ?>
                 <h1 class="page-header">
                     Page Heading
@@ -48,7 +54,7 @@ while($row = mysqli_fetch_assoc($select_all_posts_query)) {
 
                 <hr>
 
-<?php } ?>
+<?php } } ?>
 
                 
 
