@@ -1,8 +1,17 @@
 <?php include "includes/admin-header.php"; ?>
 
+<?php 
+
+if(isset($_SESSION['username'])) {
+    
+    
+        
+}
+
+?>
+
 <div id="wrapper">
 
-<!-- Navigation -->
 <?php include "includes/admin-navigation.php"; ?>
 
 <div id="page-wrapper">
@@ -12,11 +21,14 @@
         <!-- Page Heading -->
         <div class="row">
             <div class="col-lg-12">
+                
                 <h1 class="page-header">
                 ADMIN PAGE!!!
-                <small><?php echo $_SESSION['username'] ?></small>
+                <small>AUTHOR GOES HERE!</small>
                 </h1>
-
+                
+                
+                
             </div>
         </div>
         <!-- /.row -->
