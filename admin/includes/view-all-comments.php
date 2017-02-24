@@ -87,7 +87,7 @@ if(isset($_GET['approved'])) {
 if(isset($_GET['declined'])) {
     $the_comment_id = $_GET['declined'];
     
-        $query = "UPDATE comments SET comment_status = 'declined' ";
+        $query = "UPDATE comments SET comment_status = 'declined' WHERE comment_id = $the_comment_id ";
         
         $decline_query = mysqli_query($connection, $query);
         header("Location: comments.php");

@@ -14,7 +14,7 @@
                 
                 <h1 class="page-header">
                 ADMIN PAGE!!!
-                <small>AUTHOR GOES HERE!</small>
+                <small><?php echo $_SESSION['username'] ?></small>
                 </h1>
                 
                 <?php 
