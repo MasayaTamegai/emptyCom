@@ -26,9 +26,7 @@ while($row = mysqli_fetch_assoc($select_all_posts_query)) {
         $post_content = substr($row['post_content'],0,100);
         $post_status = $row['post_status'];
     
-        if($post_status !== 'published') {
-            echo "<h1>There's no post.</h1>";
-        } else {
+        if($post_status == 'published') {
             
 ?>
                 <h1 class="page-header">
@@ -50,7 +48,7 @@ while($row = mysqli_fetch_assoc($select_all_posts_query)) {
                 </a>
                 <hr>
                 <p><?php echo $post_content ?></p>
-                <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+                <a class="btn btn-primary" href="post.php?p_id=<?php echo $post_id ?>">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
                 <hr>
 

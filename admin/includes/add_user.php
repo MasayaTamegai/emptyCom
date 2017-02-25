@@ -24,6 +24,8 @@ $post_image_temp = $_FILES['image']['tmp_name'];*/
     
     confirm($create_user_query);
     
+    echo "User Created: " . " " . "<a href='users.php'> View Users </a>";
+    
 }
 
 ?>
